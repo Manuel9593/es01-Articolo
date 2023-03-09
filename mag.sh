@@ -22,9 +22,8 @@ do
     # switch part for exec menu choices
     case $MENU in
     1)  clear
-        echo
-        echo -n "Inserisci il codice: "
-        read -n5 code
+        echo ""
+        read -n5 -i -p  code
         ricerca=$(grep -w -i "$code" magazzino.txt) # Check if magazzino.txt contains already a product with the code inserted
 
         if [[ -z $ricerca ]]
