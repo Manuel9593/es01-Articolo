@@ -23,17 +23,14 @@ do
     case $MENU in
     1)  clear
         echo ""
-        read -n5 -i -p  code
+        read -n5 -i -p "Inserisci il codice: " code
         ricerca=$(grep -w -i "$code" magazzino.txt) # Check if magazzino.txt contains already a product with the code inserted
 
         if [[ -z $ricerca ]]
-        then 
-            echo -n "Inserisci la descrizione: "
-            read -n35 desc
-            echo -n "Inserisci la quantità: "
-            read -n3 many
-            echo -n "Inserisci il prezzo: "
-            read -n4 price
+        then
+            read -n35 -p "Inserisci la descrizione: " desc
+            read -n3 -p "Inserisci la quantità: " many
+            read -n4 -p "Inserisci il prezzo: "price
             # Output data of product inserted
             echo "$code,$many,$price,\"$desc\"" | tee -a magazzino.txt > /dev/null
         else
